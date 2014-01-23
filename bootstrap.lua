@@ -8,6 +8,8 @@ function init_ui_vars()
 	chatbox_size_height = 200
 	statusbar_size_width = 600
 	statusbar_size_height = 40
+	roomlabel_size_width = 600
+	roomlabel_size_height = 40
 end
 
 function format_int( number )

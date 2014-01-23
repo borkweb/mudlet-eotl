@@ -1,8 +1,8 @@
 function init_statusbar()
 	statusbar = Geyser.Label:new({
 		name = "statusbar",
-		x = window_width - size_width - gutter_width .. "px",
-		y = window_height - size_height - 200 .. "px",
+		x = window_width - statusbar_size_width - gutter_width .. "px",
+		y = window_height - statusbar_size_height - 200 .. "px",
 		width = statusbar_size_width .. "px",
 		height = statusbar_size_height .. "px",
 		fgColor = "white",
@@ -17,8 +17,8 @@ function init_statusbar()
 	statusbar:hide()
 end
 
-function statusbar_echo( line )
-	statusbar:echo( line )
+function statusbar_echo( text )
+	statusbar:echo( text )
 	tempTimer( 20, [[statusbar:hide()]] )
 end
 
