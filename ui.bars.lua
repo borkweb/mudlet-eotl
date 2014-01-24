@@ -5,6 +5,8 @@ function init_bars()
 	local bar_height = 25
 	local bar_spacing = 10
 
+	echo( "enabling bars (hp/mana/ftg/exp)\n" )
+
 	hpbar = Geyser.Gauge:new({
 		name="hpbar",
 		x=( window_width - bar_width - gutter_width - x_offset) .. "px",
@@ -99,6 +101,23 @@ function init_bars()
 	]])
 
 	send( "hp" )
+
+	if bars_trigger then
+		killTrigger( bars_trigger )
+	end
+
+	bars_trigger = tempRegexTrigger( "HP: +(.+)/(.+) +Mana: +(.+)/(.+) +Fatigue: +(.+)/(.+) +Exp: +(.+)$", [[ update_bars() ]])
+
+	if showxp_trigger then
+		killTrigger( showxp_trigger )
+	end
+
+	tempComplexRegexTrigger( "showxp_trigger", "^You killed .+!$", [[
+		send( "hp", false )
+	]], 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 )
+	showxp_trigger = tempComplexRegexTrigger( "showxp_trigger", "^\w+ kills .+!$", [[
+		send( "hp", false )
+	]], 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 )
 end
 
 function update_bars()

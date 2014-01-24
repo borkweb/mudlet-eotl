@@ -1,4 +1,5 @@
 function init_chatbox ()
+	echo( "enabling chatbox.  To mute it, type: #mute\n" )
 	chatbox = Geyser.MiniConsole:new({
 		name = "chatbox",
 		x = 0,
@@ -26,6 +27,26 @@ function init_chatbox ()
 			mute = true
 		end
 	]])
+
+	if chatbox_trigger then
+		killTrigger( chatbox_trigger )
+	end
+
+	tempComplexRegexTrigger( "chatbox_trigger", "(\\w+ tells you:) (.+)$", [[
+		chatbox_echo()
+	]], 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 )
+	tempComplexRegexTrigger( "chatbox_trigger", "(\\w+ tells you:) (.+)$", [[
+		chatbox_echo()
+	]], 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 )
+	tempComplexRegexTrigger( "chatbox_trigger", "(\\w+ says:) (.+)$", [[
+		chatbox_echo()
+	]], 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 )
+	tempComplexRegexTrigger( "chatbox_trigger", "(You say:) (.+)$", [[
+		chatbox_echo()
+	]], 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 )
+	chatbox_trigger = tempComplexRegexTrigger( "chatbox_trigger", "(\\(Group\\) \\w+:) (.+)$", [[
+		chatbox_echo()
+	]], 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 )
 end
 
 function chatbox_echo()
