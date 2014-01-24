@@ -4,7 +4,7 @@ function init_ui_vars()
 	window_width, window_height = getMainWindowSize();
 
 	gutter_width = 15
-	chatbox_size_width = 600
+	chatbox_size_width = 800
 	chatbox_size_height = 200
 	statusbar_size_width = 600
 	statusbar_size_height = 40
@@ -24,4 +24,35 @@ function format_int( number )
 	return minus .. int:reverse():gsub("^,", "") .. fraction
 end
 
+function init_containers()
+	-- make sure the text doesn't underlay the UI elements
+	setBorderRight( 615 )
+	setBorderBottom( 40 )
+
+	container_left = Geyser.Container:new({
+		name = "container_left",
+		x = 0,
+		y = 0,
+		width = "10%",
+		height = "100%"
+	})
+
+	container_right = Geyser.Container:new({
+		name = "container_right",
+		x = "-600px",
+		y = 0,
+		width = "600px",
+		height = "100%"
+	})
+
+	container_bottom = Geyser.Container:new({
+		name = "container_bottom",
+		x = 0,
+		y = "-" .. roomlabel_size_height .. "px",
+		width = "100%",
+		height = roomlabel_size_height
+	})
+end
+
 init_ui_vars()
+init_containers()

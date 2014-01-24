@@ -1,25 +1,27 @@
 function init_statusbar()
 	statusbar = Geyser.Label:new({
 		name = "statusbar",
-		x = window_width - statusbar_size_width - gutter_width .. "px",
-		y = window_height - statusbar_size_height - 200 .. "px",
-		width = statusbar_size_width .. "px",
-		height = statusbar_size_height .. "px",
+		x = "-50%",
+		y = 0,
+		width = "50%",
+		height = "100%",
 		fgColor = "white",
-		color = "firebrick"
-	})
+	}, container_bottom)
 
 	statusbar:setStyleSheet([[
-		font-size: 10px;
+		font-size: 12px;
 		padding: 10px;
 	]])
-
-	statusbar:hide()
 end
 
 function statusbar_echo( text )
+	statusbar:show()
+	statusbar:setColor( "firebrick" )
 	statusbar:echo( text )
-	tempTimer( 20, [[statusbar:hide()]] )
+	tempTimer( 20, [[
+		statusbar:echo( "" )
+		statusbar:setColor( "#222222" )
+	]] )
 end
 
 init_statusbar()

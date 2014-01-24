@@ -1,14 +1,31 @@
 function init_chatbox ()
 	chatbox = Geyser.MiniConsole:new({
-		name="chatbox",
-		x=window_width - chatbox_size_width - gutter_width .. "px",
-		y=window_height - chatbox_size_height .. "px",
-		width=chatbox_size_width .. "px",
-		height=chatbox_size_height .. "px",
-		wrapAt=100,
-	})
-	chatbox:setColor("black")
+		name = "chatbox",
+		x = 0,
+		y = "-" .. chatbox_size_height + roomlabel_size_height .. "px",
+		width = "100%",
+		height = chatbox_size_height .. "px",
+		wrapAt = 100,
+	}, container_right )
+
+	chatbox:setColor( "black" )
 	setMiniConsoleFontSize("chatbox", 10)
+
+	mute = false
+
+	if eotl_mute_alias then
+		killAlias( eotl_mute_alias )
+	end
+
+	eotl_mute_alias = tempAlias( "^#mute$", [[
+		if true == mute then
+			echo( "Unmuted\n" )
+			mute = false
+		else
+			echo( "Muted\n" )
+			mute = true
+		end
+	]])
 end
 
 function chatbox_echo()
@@ -44,7 +61,9 @@ function chatbox_echo()
 		chatbox:echo( time .. " " )
 		appendBuffer( "chatbox" )
 
-		playSoundFile("/System/Library/Sounds/Pop.aiff")
+		if false == mute then
+			playSoundFile("/System/Library/Sounds/Pop.aiff")
+		end
 	end
 end
 
