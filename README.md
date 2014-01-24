@@ -21,30 +21,30 @@ My Mudlet scripts for EotL
 -- *** Commands and helpers *** --
 
 -- provide quick directions
-dofile(getMudletHomeDir() .. "/scripts/go.lua")
+dofile(getMudletHomeDir() .. "/mudlet-eotl/go.lua")
 
 -- autojunks some items that are annoying when coining
-dofile(getMudletHomeDir() .. "/scripts/autojunk.lua")
+dofile(getMudletHomeDir() .. "/mudlet-eotl/autojunk.lua")
 
 -- enables some follow commands so you don't have to react to your friend's needs when following him/her
-dofile(getMudletHomeDir() .. "/scripts/following.lua")
+dofile(getMudletHomeDir() .. "/mudlet-eotl/following.lua")
 
 -- *** UI Stuff *** --
 
 -- required for all UI stuff in this script collection
-dofile(getMudletHomeDir() .. "/scripts/bootstrap.lua")
+dofile(getMudletHomeDir() .. "/mudlet-eotl/bootstrap.lua")
 
 -- adds a chatbox to the bottom left
-dofile(getMudletHomeDir() .. "/scripts/ui.chatbox.lua")
+dofile(getMudletHomeDir() .. "/mudlet-eotl/ui.chatbox.lua")
 
 -- adds a statusbar to the bottom left
-dofile(getMudletHomeDir() .. "/scripts/ui.statusbar.lua")
+dofile(getMudletHomeDir() .. "/mudlet-eotl/ui.statusbar.lua")
 
 -- adds hp/mana/ftg/xp bars
-dofile(getMudletHomeDir() .. "/scripts/ui.bars.lua")
+dofile(getMudletHomeDir() .. "/mudlet-eotl/ui.bars.lua")
 
 -- adds a room labeler (that is sometimes catches more than rooms)
-dofile(getMudletHomeDir() .. "/scripts/ui.roomlabel.lua")
+dofile(getMudletHomeDir() .. "/mudlet-eotl/ui.roomlabel.lua")
 ```
 
 ## Disabling features
