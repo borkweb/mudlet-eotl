@@ -21,7 +21,6 @@ My Mudlet scripts for EotL
 -- *** Commands and helpers *** --
 -- chatbox_size_width = 400
 -- chatbox_size_height = 250
--- chat_sound = "/System/Library/Sounds/Pop.aiff"
 
 -- provide quick directions
 dofile(getMudletHomeDir() .. "/mudlet-eotl/go.lua")

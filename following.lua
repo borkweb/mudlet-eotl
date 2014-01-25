@@ -1,7 +1,13 @@
 function init_following()
+	leading_helper = false
 	follow_helper = false
 
-	echo( "loading follow helper.  To toggle it, type: #follow\n" )
+	echo( "\n-----------------\n" )
+	echo( "Enabling the Follow Helper.\n" )
+	echo( "USAGE:\n" )
+	echo( "  #follow - puts you in follow mode\n" )
+	echo( "  #lead   - puts you in lead mode\n" )
+	echo( "-----------------\n\n" )
 end
 
 function following_response()
@@ -31,7 +37,12 @@ function following_response()
 		elseif "xp" == say then send( "gs " .. format_int( xp ) )
 		elseif "cave" == say then send( "cave" )
 		elseif "scarecrow" == say then send( "touch scarecrow" )
-		elseif "altar" == say then send( "place paws on altar" ) send( "say death" )
+		elseif "wish on star" == say then send( "wish on star" )
+		elseif "altar" == say then
+			send( "place claws on altar" )
+			send( "place hands on altar" )
+			send( "place paws on altar" )
+			send( "say death" )
 		elseif "sams" == say then
 			expandAlias( "#go heart" )
 			expandAlias( "#go spiced" )

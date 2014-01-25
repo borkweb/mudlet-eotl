@@ -20,9 +20,7 @@ function eotl_go_help()
 	echo( "dark ones\n" )
 	echo( "dinos\n" )
 	echo( "elixir        (also: elixirs)\n" )
-	echo( "enchant claws (Javier's if you have claws for hands)\n" )
-	echo( "enchant hands (Javier's if you have hands)\n" )
-	echo( "enchant paws  (Javier's if you have paws for hands)\n" )
+	echo( "enchant       (Javier's)\n" )
 	echo( "entesia\n" )
 	echo( "heart\n" )
 	echo( "keeshka       (also: keeshkas OR milk)\n" )
@@ -62,10 +60,11 @@ function eotl_go()
 		expandAlias( "#go entesia" )
 		speedwalk( "2n, w, 2n, 5e, s" )
 		send( "wish on star" )
+		if true leading_helper then
+			send( "group say wish on star" )
+		end
 	elseif "atlas" == dir then
-		expandAlias( "#go entesia" )
-		speedwalk( "2n, w, 2n, 5e, s" )
-		send( "wish on star" )
+		expandAlias( "#go argos" )
 		tempTimer( 5, [[speedwalk( "3w, nw, d, 4w, n, u" )]])
 	elseif "brins" == dir then
 		speedwalk( "2e, 5s, 9e, n, e", goback )
@@ -100,6 +99,9 @@ function eotl_go()
 			speedwalk( "3n, 6e, 3s, e, s" )
 			send( "change channel to 4" )
 			send( "watch tv" )
+			if true leading_helper then
+				send( "group say tv" )
+			end
 		else
 			send( "enter portal" )
 			speedwalk( "3n, 6e, 3s, e, s", goback )
@@ -112,21 +114,12 @@ function eotl_go()
 			speedwalk( "s, 16w, 7n, 3w, s", goback )
 			expandAlias( "#go back chaos" )
 		end
-	elseif "enchant claws" == dir then
-		speedwalk( "3e, n, 3e, 3s, 3e, 2u" )
-		send( "place claws on altar" )
-		send( "say death" )
+	elseif "enchant" == dir then
+		expandAlias( "#go ragnarok" )
 		speedwalk( "s, e, 3n, 4w, n, w, nw" )
-	elseif "enchant hands" == dir then
-		speedwalk( "3e, n, 3e, 3s, 3e, 2u" )
-		send( "place hands on altar" )
-		send( "say death" )
-		speedwalk( "s, e, 3n, 4w, n, w, nw" )
-	elseif "enchant paws" == dir then
-		speedwalk( "3e, n, 3e, 3s, 3e, 2u" )
-		send( "place paws on altar" )
-		send( "say death" )
-		speedwalk( "s, e, 3n, 4w, n, w, nw" )
+	elseif "enhance" == dir then
+		expandAlias( "#go newhaven" )
+		speedwalk( "s, 2w, 22s, 19w, s, w" )
 	elseif "entesia" == dir then
 		if false == goback then
 			send( "e" )
@@ -134,28 +127,59 @@ function eotl_go()
 		else
 			speedwalk( "3w, n" )
 			send( "enter mirror" )
+			if true == leading_helper then
+				send( "group say mirror" )
+			end
 		end
 	elseif "heart" == dir then
 		send( "pinch daisy" )
 		speedwalk( "6n, e" )
 		send( "ride birdie" )
+		if true leading_helper then
+			send( "group say birdie" )
+		end
 	elseif "keeshka" == dir or "keeshkas" == dir or "milk" == dir then
 		speedwalk( "5n" )
 		send( "cross bridge" )
 		speedwalk( "3n, se, 2e" )
 		send( "touch scarecrow" )
 		speedwalk( "3e, ne, 3n, w" )
+	elseif "mk4" == dir or "mk5" == dir or "mk6" == dir then
+		if false == goback then
+			expandAlias( "#go xmen" )
+			speedwalk( "2n, 2w" )
+		else
+			speedwalk( "2e, 2s" )
+			expandAlias( "#go back xmen" )
+		end
+	elseif "mk8" == dir or "mk7" == dir or "mk9" == dir then
+		if false == goback then
+			expandAlias( "#go xmen" )
+			speedwalk( "2n, w" )
+		else
+			speedwalk( "e, 2s" )
+			expandAlias( "#go back xmen" )
+		end
 	elseif "newhaven" == dir then
 		speedwalk( "3n, 6e, 3s, e, s" )
 		send( "change channel to 5" )
 		send( "watch tv" )
+		if true leading_helper then
+			send( "group say tv" )
+		end
 	elseif "oracle" == dir then
 		speedwalk( "2e, 5s, 3w, s", goback )
+	elseif "ragnarok claws" == dir then
+		speedwalk( "3e, n, 3e, 3s, 3e, 2u" )
+		send( "place claws on altar" )
+		send( "place hands on altar" )
+		send( "place paws on altar" )
+		send( "say death" )
+		if true == leading_helper then
+			send( "group say altar" )
+		end
 	elseif "reds" == dir then
 		speedwalk( "5w, 2d, 6s, 7w, 3n, 3w, s, 3w, 5s, e, 3s, e, 4s, w, 2s, e, 2s, sw, sw, 2w, nw, n, 3w, 2s, 5w, 2n, 5w, 3n, 6w, 5s, 2sw, 4s", goback )
-	elseif "enhance" == dir then
-		expandAlias( "#go newhaven" )
-		speedwalk( "s, 2w, 22s, 19w, s, w" )
 	elseif "spiced" == dir then
 		if false == goback then
 			expandAlias( "#go newhaven" )
@@ -215,22 +239,6 @@ function eotl_go()
 			speedwalk( "3n" )
 		else
 			speedwalk( "3s" )
-			expandAlias( "#go back xmen" )
-		end
-	elseif "mk4" == dir or "mk5" == dir or "mk6" == dir then
-		if false == goback then
-			expandAlias( "#go xmen" )
-			speedwalk( "2n, 2w" )
-		else
-			speedwalk( "2e, 2s" )
-			expandAlias( "#go back xmen" )
-		end
-	elseif "mk8" == dir or "mk7" == dir or "mk9" == dir then
-		if false == goback then
-			expandAlias( "#go xmen" )
-			speedwalk( "2n, w" )
-		else
-			speedwalk( "e, 2s" )
 			expandAlias( "#go back xmen" )
 		end
 	elseif "zarinia" == dir then
