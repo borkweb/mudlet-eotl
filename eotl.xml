@@ -295,6 +295,26 @@ send( &quot;rest&quot; )</script>
                 <packageName></packageName>
                 <regex>^#rgo (back )?(.+)$</regex>
             </Alias>
+            <Alias isActive="yes" isFolder="no">
+                <name>go help</name>
+                <script>eotl_go_help()</script>
+                <command></command>
+                <packageName></packageName>
+                <regex>#gohelp</regex>
+            </Alias>
+            <Alias isActive="yes" isFolder="no">
+                <name>leading helper</name>
+                <script>if false == leading_helper then
+	echo( &quot;Leading Helper: ON\n&quot; )
+	leading_helper = true
+else
+	echo( &quot;Leading Helper: OFF\n&quot; )
+	leading_helper = false
+end</script>
+                <command></command>
+                <packageName></packageName>
+                <regex>^#lead$</regex>
+            </Alias>
         </AliasGroup>
     </AliasPackage>
     <ActionPackage/>
