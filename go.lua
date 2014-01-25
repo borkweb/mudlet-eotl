@@ -35,6 +35,7 @@ function eotl_go_help()
 	echo( "stats\n" )
 	echo( "trolls\n" )
 	echo( "temper        (Temper armor)\n" )
+	echo( "witch         (Delvarii in Ragnarok\n" )
 	echo( "woods         (A shop in the woods. also: woodshop)\n" )
 	echo( "xmen\n" )
 	echo( "xbank\n" )
@@ -223,6 +224,14 @@ function eotl_go()
 		else
 			speedwalk( "s, 16w, 7n, 2w, s, e", goback )
 			expandAlias( "#go back chaos" )
+		end
+	elseif "witch" == dir then
+		if false == goback then
+			expandAlias( "#go ragnarok" )
+			speedwalk( "s, 3e" )
+		else
+			speedwalk( "s, 3e", goback )
+			expandAlias( "#go back ragnarok" )
 		end
 	elseif "woodshop" == dir or "woods" == dir then
 		speedwalk( "5w, 2d, 4s, 4e, s, e, 4s, e, n, w, 3n, 2e, n, e, s, e, 2s, 3e", goback )
