@@ -16,23 +16,34 @@ function eotl_go_help()
 	echo( "argos         (City of Argos - needs to be  night)\n" )
 	echo( "atlas         (Atlas Mountains - needs to be night)\n" )
 	echo( "brins\n" )
+	echo( "capacitor     (Capacitor Guild)\n" )
 	echo( "chaos         (same dirs as Disaster)\n" )
 	echo( "chaoscastle   (coining!  Also: defenders)\n" )
+	echo( "cleric        (Crusader Guild: Cleric Spec)\n" )
+	echo( "crusader      (Crusader Guild)\n" )
 	echo( "dark ones\n" )
 	echo( "dinos\n" )
 	echo( "elixir        (also: elixirs)\n" )
 	echo( "enchant       (Javier's)\n" )
+	echo( "enhance       (enhancement for items in Newhaven)\n" )
 	echo( "entesia\n" )
+	echo( "forester      (Forester Guild)\n" )
+	echo( "headhunter    (Headhunter Guild)\n" )
 	echo( "heart\n" )
 	echo( "keeshka       (also: keeshkas OR milk)\n" )
 	echo( "kindred\n" )
 	echo( "newhaven\n" )
+	echo( "mageslayer    (Mageslayer Guild)\n" )
 	echo( "mk4           (also: mk5 and mk6)\n" )
 	echo( "mk7           (also: mk8 and mk9)\n" )
 	echo( "oracle\n" )
 	echo( "ragnarok\n" )
+	echo( "ranger        (Forester Guild: Ranger Spec)\n" )
 	echo( "reds          (Red Disciple Guild)\n" )
-	echo( "enhance       (enhancement for items in Newhaven)\n" )
+	echo( "padawan       (Padawan Guild)\n" )
+	echo( "paladin       (Crusader Guild: Paladin Spec)\n" )
+	echo( "rogue         (Rogue Guild)\n" )
+	echo( "spellcaster   (Spellcaster Guild)\n" )
 	echo( "spiced        (Spice items in Sams)\n" )
 	echo( "stats\n" )
 	echo( "toad          (Uses the staff to go to Yxuxacta\n" )
@@ -75,6 +86,8 @@ function eotl_go()
 		tempTimer( 5, [[speedwalk( "3w, nw, d, 4w, n, u" )]])
 	elseif "brins" == dir then
 		speedwalk( "2e, 5s, 9e, n, e", goback )
+	elseif "capacitor" == dir then
+		speedwalk( "3d, 3n", goback )
 	elseif "chaos" == dir or "disaster" == dir then
 		if false == goback then
 			expandAlias( "#go entesia" )
@@ -91,6 +104,16 @@ function eotl_go()
 			speedwalk( "s, 16w, 7n, 4w, n, w", goback )
 			expandAlias( "#go back chaos" )
 		end
+	elseif "cleric" == dir then
+		if false == goback then
+			expandAlias( "#go crusader" )
+			speedwalk( "n, 2u, w" )
+		else
+			speedwalk( "n, 2u, w", goback )
+			expandAlias( "#go back crusader" )
+		end
+	elseif "crusader" == dir then
+		speedwalk( "2e, 5s, 9e, 5n, 4u", goback )
 	elseif "dark ones" == dir or "darkones" == dir then
 		if false == goback then
 			speedwalk( "5n" )
@@ -143,6 +166,22 @@ function eotl_go()
 				send( "group say mirror" )
 			end
 		end
+	elseif "forester" == dir then
+		speedwalk( "d, 3w, 5s, 17e, n" )
+		send( "open door" )
+		speedwalk( "d" )
+		send( "look into sphere" )
+		speedwalk( "5d" )
+		send( "out" )
+		speedwalk( "5e, 7s" )
+	elseif "headhunter" == dir then
+		if false == goback then
+			expandAlias( "#go ragnarok" )
+			speedwalk( "s, e, 3n, 2w, 3n" )
+		else
+			speedwalk( "s, e, 3n, 2w, 3n", goback )
+			expandAlias( "#go back ragnarok" )
+		end
 	elseif "heart" == dir then
 		send( "pinch daisy" )
 		speedwalk( "6n, e" )
@@ -182,6 +221,8 @@ function eotl_go()
 				send( "group say move sheets" )
 			end
 		]])
+	elseif "mageslayer" == dir then
+		speedwalk( "5w, 2d, 10s, 3e, se, u, n, 2n", goback )
 	elseif "mk4" == dir or "mk5" == dir or "mk6" == dir then
 		if false == goback then
 			expandAlias( "#go xmen" )
@@ -207,6 +248,20 @@ function eotl_go()
 		end
 	elseif "oracle" == dir then
 		speedwalk( "2e, 5s, 3w, s", goback )
+	elseif "padawan" == dir then
+		speedwalk( "3w, 5s, 4w, n, 4w", goback )
+	elseif "paladin" == dir then
+		if false == goback then
+			expandAlias( "#go crusader" )
+			speedwalk( "n, e, u, n" )
+		else
+			speedwalk( "n, e, u, n", goback )
+			expandAlias( "#go back crusader" )
+		end
+	elseif "ranger" == dir then
+		speedwalk( "d, 5w, 2d, 2e, s, 3e" )
+		send( "climb tree" )
+		speedwalk( "u, 2w" )
 	elseif "ragnarok" == dir then
 		if false == goback then
 			speedwalk( "3e, n, 3e, 3s, 3e, 2u" )
@@ -229,6 +284,15 @@ function eotl_go()
 		end
 	elseif "reds" == dir then
 		speedwalk( "5w, 2d, 6s, 7w, 3n, 3w, s, 3w, 5s, e, 3s, e, 4s, w, 2s, e, 2s, sw, sw, 2w, nw, n, 3w, 2s, 5w, 2n, 5w, 3n, 6w, 5s, 2sw, 4s", goback )
+	elseif "rogue" == dir then
+		speedwalk( "3e, n, 3e, s, w" )
+		send( "sit bench" )
+	elseif "spellcaster" == dir then
+		speedwalk( "d, 3w, 4s, 3w" )
+		send( "make appointment with admissions" )
+		tempTimer( 5, [[
+			speedwalk( "w, 2n" )
+		]])
 	elseif "spiced" == dir then
 		if false == goback then
 			expandAlias( "#go newhaven" )
