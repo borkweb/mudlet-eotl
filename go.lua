@@ -60,7 +60,7 @@ function eotl_go()
 		expandAlias( "#go entesia" )
 		speedwalk( "2n, w, 2n, 5e, s" )
 		send( "wish on star" )
-		if true leading_helper then
+		if true == leading_helper then
 			send( "group say wish on star" )
 		end
 	elseif "atlas" == dir then
@@ -99,7 +99,7 @@ function eotl_go()
 			speedwalk( "3n, 6e, 3s, e, s" )
 			send( "change channel to 4" )
 			send( "watch tv" )
-			if true leading_helper then
+			if true == leading_helper then
 				send( "group say tv" )
 			end
 		else
@@ -135,7 +135,7 @@ function eotl_go()
 		send( "pinch daisy" )
 		speedwalk( "6n, e" )
 		send( "ride birdie" )
-		if true leading_helper then
+		if true == leading_helper then
 			send( "group say birdie" )
 		end
 	elseif "keeshka" == dir or "keeshkas" == dir or "milk" == dir then
@@ -164,7 +164,7 @@ function eotl_go()
 		speedwalk( "3n, 6e, 3s, e, s" )
 		send( "change channel to 5" )
 		send( "watch tv" )
-		if true leading_helper then
+		if true == leading_helper then
 			send( "group say tv" )
 		end
 	elseif "oracle" == dir then
