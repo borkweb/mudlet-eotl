@@ -4,7 +4,7 @@ function init_go()
 	echo( "  #go dir      -- sends you to a dir\n" )
 	echo( "  #go back dir -- sends you back to heart from a dir\n" )
 	echo( "  #rgo dir     -- sends you to a dir and makes you rest\n" )
-	echo( "  #go help     -- shows you dirs you can enter\n\n"
+	echo( "  #go help     -- shows you dirs you can enter\n\n" )
 	echo( "--------------\n" )
 end
 
