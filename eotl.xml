@@ -34,7 +34,7 @@
                     <string>(\w+ tells you:) (.+)$</string>
                     <string>(You tell \w+:) (.+)$</string>
                     <string>(\w+ says:) (.+)$</string>
-                    <string>(\(Group\) \w+:) (.+)$</string>
+                    <string>(\(Group\) \w+) (.+)$</string>
                 </regexCodeList>
                 <regexCodePropertyList>
                     <integer>1</integer>
