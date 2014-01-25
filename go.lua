@@ -15,6 +15,7 @@ function eotl_go_help()
 	echo( "alfred\n" )
 	echo( "argos         (City of Argos - needs to be  night)\n" )
 	echo( "atlas         (Atlas Mountains - needs to be night)\n" )
+	echo( "bard          (Rogue Guild: Bard Spec)\n" )
 	echo( "brins\n" )
 	echo( "capacitor     (Capacitor Guild)\n" )
 	echo( "chaos         (same dirs as Disaster)\n" )
@@ -30,12 +31,14 @@ function eotl_go_help()
 	echo( "forester      (Forester Guild)\n" )
 	echo( "headhunter    (Headhunter Guild)\n" )
 	echo( "heart\n" )
+	echo( "jedi          (Padawan Guild: Jedi Spec)\n" )
 	echo( "keeshka       (also: keeshkas OR milk)\n" )
 	echo( "kindred\n" )
 	echo( "newhaven\n" )
 	echo( "mageslayer    (Mageslayer Guild)\n" )
 	echo( "mk4           (also: mk5 and mk6)\n" )
 	echo( "mk7           (also: mk8 and mk9)\n" )
+	echo( "necro         (Spellcaster Guild: Necromancer Spec)\n" )
 	echo( "oracle\n" )
 	echo( "ragnarok\n" )
 	echo( "ranger        (Forester Guild: Ranger Spec)\n" )
@@ -43,12 +46,15 @@ function eotl_go_help()
 	echo( "padawan       (Padawan Guild)\n" )
 	echo( "paladin       (Crusader Guild: Paladin Spec)\n" )
 	echo( "rogue         (Rogue Guild)\n" )
+	echo( "sith          (Padawan Guild: Sith Spec)\n" )
 	echo( "spellcaster   (Spellcaster Guild)\n" )
 	echo( "spiced        (Spice items in Sams)\n" )
 	echo( "stats\n" )
+	echo( "theif         (Rogue Guild: Theif Spec)\n" )
 	echo( "toad          (Uses the staff to go to Yxuxacta\n" )
 	echo( "trolls\n" )
 	echo( "temper        (Temper armor)\n" )
+	echo( "warlock       (Spellcaster Guild: Warlock Spec)\n" )
 	echo( "witch         (Delvarii in Ragnarok\n" )
 	echo( "woods         (A shop in the woods. also: woodshop)\n" )
 	echo( "xmen\n" )
@@ -84,6 +90,8 @@ function eotl_go()
 	elseif "atlas" == dir then
 		expandAlias( "#go argos" )
 		tempTimer( 5, [[speedwalk( "3w, nw, d, 4w, n, u" )]])
+	elseif "bard" == dir then
+		speedwalk( "2e, 5s, 9w, 10n", goback )
 	elseif "brins" == dir then
 		speedwalk( "2e, 5s, 9e, n, e", goback )
 	elseif "capacitor" == dir then
@@ -189,6 +197,14 @@ function eotl_go()
 		if true == leading_helper then
 			send( "group say birdie" )
 		end
+	elseif "jedi" == dir then
+		if false == goback then
+			expandAlias( "#go padawan" )
+			speedwalk( "2u", goback )
+		else
+			speedwalk( "2u", goback )
+			expandAlias( "#go back padawan" )
+		end
 	elseif "keeshka" == dir or "keeshkas" == dir or "milk" == dir then
 		speedwalk( "5n" )
 		send( "cross bridge" )
@@ -239,6 +255,16 @@ function eotl_go()
 			speedwalk( "e, 2s" )
 			expandAlias( "#go back xmen" )
 		end
+	elseif "necro" == dir then
+		if false == goback then
+			speedwalk( "6d, 2n, 4w, d, w" )
+			send( "enter hole" )
+			speedwalk( "2w, se" )
+		else
+			speedwalk( "2w, se", goback )
+			send( "climb" )
+			speedwalk( "6d, 2n, 4w, d, w", goback )
+		end
 	elseif "newhaven" == dir then
 		speedwalk( "3n, 6e, 3s, e, s" )
 		send( "change channel to 5" )
@@ -287,6 +313,14 @@ function eotl_go()
 	elseif "rogue" == dir then
 		speedwalk( "3e, n, 3e, s, w" )
 		send( "sit bench" )
+	elseif "sith" == dir then
+		if false == goback then
+			speedwalk( "3w, 5s, 4w, 2n, 2w" )
+			send( "cave" )
+		else
+			send( "out" )
+			speedwalk( "3w, 5s, 4w, 2n, 2w", goback )
+		end
 	elseif "spellcaster" == dir then
 		speedwalk( "d, 3w, 4s, 3w" )
 		send( "make appointment with admissions" )
@@ -304,6 +338,14 @@ function eotl_go()
 		end
 	elseif "stats" == dir then
 		speedwalk( "4w, 2s", goback )
+	elseif "theif" == dir then
+		if false == goback then
+			expandAlias( "#go entesia" )
+			speedwalk( "11e, n, 3e, n, w" )
+		else
+			speedwalk( "11e, n, 3e, n, w", goback )
+			expandAlias( "#go back entesia" )
+		end
 	elseif "toad" == dir then
 		if true == leading_helper then
 			send( "give crystallized lysergic staff to " .. lead_who )
@@ -325,6 +367,14 @@ function eotl_go()
 		else
 			speedwalk( "s, 16w, 7n, 2w, s, e", goback )
 			expandAlias( "#go back chaos" )
+		end
+	elseif "warlock" == dir then
+		if false == goback then
+			expandAlias( "#go entesia" )
+			speedwalk( "11e, 4s, e, 3s, e, 4s, w, 2s, e, 2s, 2sw, 2w, nw, n, 3w, 2s, 16w, 7n, 2w, n, w" )
+		else
+			speedwalk( "11e, 4s, e, 3s, e, 4s, w, 2s, e, 2s, 2sw, 2w, nw, n, 3w, 2s, 16w, 7n, 2w, n, w", goback )
+			expandAlias( "#go back entesia" )
 		end
 	elseif "witch" == dir then
 		if false == goback then
