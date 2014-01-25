@@ -100,30 +100,7 @@ function init_bars()
 			padding: 3px;
 	]])
 
-	send( "hp" )
-
-	if bars_trigger then
-		killTrigger( bars_trigger )
-	end
-
-	bars_trigger = tempRegexTrigger( "HP: +(.+)/(.+) +Mana: +(.+)/(.+) +Fatigue: +(.+)/(.+) +Exp: +(.+)", [[ update_bars() ]])
-
-	if bars_mageslayer_trigger then
-		killTrigger( bars_mageslayer_trigger )
-	end
-
-	bars_mageslayer_trigger = tempRegexTrigger( "HP: +(.+)/(.+) +Fatigue: +(.+)/(.+) +Exp: +(.+)", [[ update_bars() ]])
-
-	if showxp_trigger then
-		killTrigger( showxp_trigger )
-	end
-
-	tempComplexRegexTrigger( "showxp_trigger", "^You killed .+!$", [[
-		send( "hp", false )
-	]], 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 )
-	showxp_trigger = tempComplexRegexTrigger( "showxp_trigger", "^\w+ kills .+!$", [[
-		send( "hp", false )
-	]], 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 )
+	send( "hp", false )
 end
 
 function update_bars_full()

@@ -2,30 +2,6 @@ function init_following()
 	follow_helper = false
 
 	echo( "loading follow helper.  To toggle it, type: #follow\n" )
-	if following_trigger then
-		killTrigger( following_trigger )
-	end
-
-	tempComplexRegexTrigger( "following_trigger", "tells you: (.+)$", [[
-		following_response()
-	]], 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 )
-	following_trigger = tempComplexRegexTrigger( "following_trigger", "\\(Group\\) .+: (.+)$", [[
-		following_response()
-	]], 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 )
-
-	if following_alias then
-		killAlias( following_alias )
-	end
-
-	following_trigger = tempAlias( "^#follow$", [[
-		if false == follow_helper then
-			echo( "Follow Helper: ON\n" )
-			follow_helper = true
-		else
-			echo( "Follow Helper: OFF\n" )
-			follow_helper = false
-		end
-	]])
 end
 
 function following_response()
@@ -52,6 +28,18 @@ function following_response()
 		elseif "read book" == say then send( "read book" )
 		elseif "rest" == say then send( "rest" )
 		elseif "stand" == say then send( "stand" )
+		elseif "xp" == say then send( "gs " .. format_int( xp ) )
+		elseif "cave" == say then send( "cave" )
+		elseif "scarecrow" == say then send( "touch scarecrow" )
+		elseif "altar" == say then send( "place paws on altar" ) send( "say death" )
+		elseif "sams" == say then
+			expandAlias( "#go heart" )
+			expandAlias( "#go spiced" )
+		elseif "zarinia" == say then
+			expandAlias( "#go heart" )
+			expandAlias( "#go zarinia" )
+		elseif "daisy" == say then
+			send( "pinch daisy" )
 		end
 	end
 end

@@ -13,40 +13,6 @@ function init_chatbox ()
 	setMiniConsoleFontSize("chatbox", 10)
 
 	mute = false
-
-	if eotl_mute_alias then
-		killAlias( eotl_mute_alias )
-	end
-
-	eotl_mute_alias = tempAlias( "^#mute$", [[
-		if true == mute then
-			echo( "Unmuted\n" )
-			mute = false
-		else
-			echo( "Muted\n" )
-			mute = true
-		end
-	]])
-
-	if chatbox_trigger then
-		killTrigger( chatbox_trigger )
-	end
-
-	tempComplexRegexTrigger( "chatbox_trigger", "(\\w+ tells you:) (.+)$", [[
-		chatbox_echo()
-	]], 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 )
-	tempComplexRegexTrigger( "chatbox_trigger", "(\\w+ tells you:) (.+)$", [[
-		chatbox_echo()
-	]], 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 )
-	tempComplexRegexTrigger( "chatbox_trigger", "(\\w+ says:) (.+)$", [[
-		chatbox_echo()
-	]], 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 )
-	tempComplexRegexTrigger( "chatbox_trigger", "(You say:) (.+)$", [[
-		chatbox_echo()
-	]], 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 )
-	chatbox_trigger = tempComplexRegexTrigger( "chatbox_trigger", "(\\(Group\\) \\w+:) (.+)$", [[
-		chatbox_echo()
-	]], 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 )
 end
 
 function chatbox_echo()

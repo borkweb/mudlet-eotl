@@ -16,12 +16,6 @@ function init_roomlabel()
 		opacity: 0.5;
 		padding: 10px;
 	]])
-
-	if roomlabel_trigger then
-		killTrigger( roomlabel_trigger )
-	end
-
-	roomlabel_trigger = tempRegexTrigger( "^(\\(.+\\> )?(.+)<(.+)>$", [[ roomlog() ]])
 end
 
 function roomlog()
