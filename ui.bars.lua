@@ -106,7 +106,13 @@ function init_bars()
 		killTrigger( bars_trigger )
 	end
 
-	bars_trigger = tempRegexTrigger( "HP: +(.+)/(.+) +Mana: +(.+)/(.+) +Fatigue: +(.+)/(.+) +Exp: +(.+)$", [[ update_bars() ]])
+	bars_trigger = tempRegexTrigger( "HP: +(.+)/(.+) +Mana: +(.+)/(.+) +Fatigue: +(.+)/(.+) +Exp: +(.+)", [[ update_bars() ]])
+
+	if bars_mageslayer_trigger then
+		killTrigger( bars_mageslayer_trigger )
+	end
+
+	bars_mageslayer_trigger = tempRegexTrigger( "HP: +(.+)/(.+) +Fatigue: +(.+)/(.+) +Exp: +(.+)", [[ update_bars() ]])
 
 	if showxp_trigger then
 		killTrigger( showxp_trigger )
@@ -120,7 +126,7 @@ function init_bars()
 	]], 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 )
 end
 
-function update_bars()
+function update_bars_full()
 	hp_current = string.gsub(matches[2], "%s+", "")
 	hp_max = string.gsub(matches[3], "%s+", "")
 	mana_current = string.gsub(matches[4], "%s+", "")
@@ -131,6 +137,19 @@ function update_bars()
 
 	hpbar:setValue( tonumber( hp_current ), tonumber( hp_max ), "HP: " .. format_int( hp_current ) .. " / " .. format_int( hp_max ) )
 	manabar:setValue( tonumber( mana_current ), tonumber( mana_max ), "MP: " .. format_int( mana_current ) .. " / " .. format_int( mana_max ) )
+	ftgbar:setValue( tonumber( ftg_current ), tonumber( ftg_max ), "FTG: " .. format_int( ftg_current ) .. " / " .. format_int( ftg_max ) )
+	xpbar:setValue( tonumber( xp ), tonumber( xp ), "XP: " .. format_int( xp ) )
+end
+
+function update_bars_mageslayer()
+	hp_current = string.gsub(matches[2], "%s+", "")
+	hp_max = string.gsub(matches[3], "%s+", "")
+	ftg_current = string.gsub(matches[4], "%s+", "")
+	ftg_max = string.gsub(matches[5], "%s+", "")
+	xp = string.gsub(matches[6], "%s+", "")
+
+	hpbar:setValue( tonumber( hp_current ), tonumber( hp_max ), "HP: " .. format_int( hp_current ) .. " / " .. format_int( hp_max ) )
+	manabar:setValue( 1, 1, "MP: N/A" )
 	ftgbar:setValue( tonumber( ftg_current ), tonumber( ftg_max ), "FTG: " .. format_int( ftg_current ) .. " / " .. format_int( ftg_max ) )
 	xpbar:setValue( tonumber( xp ), tonumber( xp ), "XP: " .. format_int( xp ) )
 end
