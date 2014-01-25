@@ -8,7 +8,7 @@ My Mudlet scripts for EotL
 ### Get the files
 
 1. You'll need git installed on your mac. Here are some [instructions](https://help.github.com/articles/set-up-git).
-2. Go to command line on your mac via the terminal.  Type: `cd ~/.config//mudlet/profiles/EotL/` _Replacing "EotL" with whatever profile you created for EotL in your mudlet client._
+2. Go to command line on your mac via the terminal.  Type: `cd ~/.config/mudlet/profiles/EotL/` _Replacing "EotL" with whatever profile you created for EotL in your mudlet client._
 3. Clone this repository: `git clone git@github.com:borkweb/mudlet-eotl.git`
 
 ### Set up the Mudlet script
