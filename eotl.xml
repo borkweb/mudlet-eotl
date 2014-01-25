@@ -297,16 +297,24 @@ send( &quot;rest&quot; )</script>
             </Alias>
             <Alias isActive="yes" isFolder="no">
                 <name>leading helper</name>
-                <script>if false == leading_helper then
-	echo( &quot;Leading Helper: ON\n&quot; )
-	leading_helper = true
+                <script>lead_who = matches[2]
+
+if lead_who or true == leading_helper then
+	if false == leading_helper then
+		echo( &quot;Leading Helper: ON\n&quot; )
+		echo( &quot;You are now leading &quot; .. lead_who ..&quot;\n&quot; )
+		leading_helper = true
+	else
+		echo( &quot;Leading Helper: OFF\n&quot; )
+		leading_helper = false
+		lead_who = &quot;&quot;
+	end
 else
-	echo( &quot;Leading Helper: OFF\n&quot; )
-	leading_helper = false
+	echo( &quot;Lead who?  Example: lead draevokk\n&quot; )
 end</script>
                 <command></command>
                 <packageName></packageName>
-                <regex>^#lead$</regex>
+                <regex>^#lead( .+)?$</regex>
             </Alias>
         </AliasGroup>
     </AliasPackage>

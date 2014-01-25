@@ -25,6 +25,7 @@ function eotl_go_help()
 	echo( "entesia\n" )
 	echo( "heart\n" )
 	echo( "keeshka       (also: keeshkas OR milk)\n" )
+	echo( "kindred\n" )
 	echo( "newhaven\n" )
 	echo( "mk4           (also: mk5 and mk6)\n" )
 	echo( "mk7           (also: mk8 and mk9)\n" )
@@ -154,6 +155,25 @@ function eotl_go()
 		speedwalk( "3n, se, 2e" )
 		send( "touch scarecrow" )
 		speedwalk( "3e, ne, 3n, w" )
+	elseif "kindred" == dir then
+		if true == leading_helper then
+			send( "get 120 coins from pack" )
+			send( "get 120 coins from belt" )
+			send( "give 120 coins to " .. lead_who )
+		end
+		speedwalk( "5w, 2d, 5n" )
+		send( "pay guard" )
+		speedwalk( "3n, e, s" )
+		send( "deny humanity" )
+		if true == leading_helper then
+			send( "group say deny humanity" )
+		end
+		tempTimer( 2, [[
+			send( "stand" )
+			speedwalk( "n, ne, w, n" )
+			send( "move sheets" )
+			send( "lay on bed" )
+		]])
 	elseif "mk4" == dir or "mk5" == dir or "mk6" == dir then
 		if false == goback then
 			expandAlias( "#go xmen" )
