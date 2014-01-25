@@ -3,9 +3,23 @@ function init_go()
 		killAlias( eotl_go_alias )
 	end
 
-	echo( "enabling go alias\n" )
+	if eotl_rgo_alias then
+		killAlias( eotl_rgo_alias )
+	end
+
+	echo( "--------------\n" )
+	echo( "ENABLING go ALIAS. Usage:\n" )
+	echo( "  #go dir -- sends you to a dir\n" )
+	echo( "  #go back dir -- sends you back to heart from a dir\n" )
+	echo( "  #rgo dir -- sends you to a dir and makes you rest\n\n" )
+	echo( "--------------\n" )
 	eotl_go_alias = tempAlias( "^#go (back )?(.+)$", [[
 		eotl_go()
+	]] )
+	eotl_rgo_alias = tempAlias( "^#rgo (back )?(.+)$", [[
+		matches[2] = ""
+		eotl_go()
+		send( "rest" )
 	]] )
 end
 

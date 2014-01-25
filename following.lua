@@ -33,6 +33,7 @@ function following_response()
 		say = matches[2]
 
 		if "birdie" == say then send( "ride birdie" )
+		elseif "door" == say then send( "open door" )
 		elseif "portal" == say then send( "enter portal" )
 		elseif "enter portal" == say then send( "enter portal" )
 		elseif "mirror" == say then send( "enter mirror" )
