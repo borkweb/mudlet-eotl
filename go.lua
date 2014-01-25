@@ -20,18 +20,32 @@ function eotl_go()
 	end
 
 	if "argos" == dir then
-		send( "e" )
-		send( "swim" )
+		expandAlias( "#go entesia" )
 		speedwalk( "2n, w, 2n, 5e, s" )
 		send( "wish on star" )
 	elseif "atlas" == dir then
-		send( "e" )
-		send( "swim" )
+		expandAlias( "#go entesia" )
 		speedwalk( "2n, w, 2n, 5e, s" )
 		send( "wish on star" )
 		tempTimer( 5, [[speedwalk( "3w, nw, d, 4w, n, u" )]])
 	elseif "brins" == dir then
 		speedwalk( "2e, 5s, 9e, n, e", goback )
+	elseif "chaos" == dir or "disaster" == dir then
+		if false == goback then
+			expandAlias( "#go entesia" )
+			speedwalk( "11e, 4s, e, 3s, e, 4s, w, 2s, e, 2s, 2sw, 2w, nw, n, 3w, s" )
+		else
+			speedwalk( "11e, 4s, e, 3s, e, 4s, w, 2s, e, 2s, 2sw, 2w, nw, n, 3w, s", goback )
+			expandAlias( "#go back entesia" )
+		end
+	elseif "chaoscastle" == dir or "defenders" == dir then
+		if false == goback then
+			expandAlias( "#go chaos" )
+			speedwalk( "s, 16w, 7n, 4w, n, w" )
+		else
+			speedwalk( "s, 16w, 7n, 4w, n, w", goback )
+			expandAlias( "#go back chaos" )
+		end
 	elseif "dark ones" == dir or "darkones" == dir then
 		if false == goback then
 			speedwalk( "5n" )
@@ -42,16 +56,6 @@ function eotl_go()
 			send( "cross bridge" )
 			speedwalk( "5n", goback )
 		end
-	elseif "chaoscastle" == dir or "defenders" == dir then
-		if false == goback then
-			send( "e" )
-			send( "swim" )
-			speedwalk( "11e, 4s, e, 3s, e, 4s, w, 2s, e, 2s, 2sw, 2w, nw, n, 3w, 2s, 16w, 7n, 4w, n, w" )
-		else
-			speedwalk( "11e, 4s, e, 3s, e, 4s, w, 2s, e, 2s, 2sw, 2w, nw, n, 3w, 2s, 16w, 7n, 4w, n, w", goback )
-			speedwalk( "3w, n" )
-			send( "enter mirror" )
-		end
 	elseif "dinos" == dir then
 		if false == goback then
 			speedwalk( "3n, 6e, 3s, e, s" )
@@ -61,25 +65,13 @@ function eotl_go()
 			send( "enter portal" )
 			speedwalk( "3n, 6e, 3s, e, s", goback )
 		end
-	elseif "disaster" == dir then
-		if false == goback then
-			send( "e" )
-			send( "swim" )
-			speedwalk( "11e, 4s, e, 3s, e, 4s, w, 2s, e, 2s, 2sw, 2w, nw, n, 3w, s" )
-		else
-			speedwalk( "11e, 4s, e, 3s, e, 4s, w, 2s, e, 2s, 2sw, 2w, nw, n, 3w, s", goback )
-			speedwalk( "3w, n" )
-			send( "enter mirror" )
-		end
 	elseif "elixir" == dir or "elixirs" == dir then
 		if false == goback then
-			send( "e" )
-			send( "swim" )
-			speedwalk( "11e, 4s, e, 3s, e, 4s, w, 2s, e, 2s, 2sw, 2w, nw, n, 3w, 2s, 16w, 7n, 3w, s" )
+			expandAlias( "#go chaos" )
+			speedwalk( "s, 16w, 7n, 3w, s" )
 		else
-			speedwalk( "11e, 4s, e, 3s, e, 4s, w, 2s, e, 2s, 2sw, 2w, nw, n, 3w, 2s, 16w, 7n, 3w, s", goback )
-			speedwalk( "3w, n" )
-			send( "enter mirror" )
+			speedwalk( "s, 16w, 7n, 3w, s", goback )
+			expandAlias( "#go back chaos" )
 		end
 	elseif "enchant claws" == dir then
 		speedwalk( "3e, n, 3e, 3s, 3e, 2u" )
@@ -96,6 +88,14 @@ function eotl_go()
 		send( "place paws on altar" )
 		send( "say death" )
 		speedwalk( "s, e, 3n, 4w, n, w, nw" )
+	elseif "entesia" == dir then
+		if false == goback then
+			send( "e" )
+			send( "swim" )
+		else
+			speedwalk( "3w, n" )
+			send( "enter mirror" )
+		end
 	elseif "heart" == dir then
 		send( "pinch daisy" )
 		speedwalk( "6n, e" )
@@ -106,20 +106,18 @@ function eotl_go()
 		speedwalk( "3n, se, 2e" )
 		send( "touch scarecrow" )
 		speedwalk( "3e, ne, 3n, w" )
+	elseif "newhaven" == dir then
+		speedwalk( "3n, 6e, 3s, e, s, change channel to 5, watch tv" )
 	elseif "oracle" == dir then
 		speedwalk( "2e, 5s, 3w, s", goback )
 	elseif "reds" == dir then
 		speedwalk( "5w, 2d, 6s, 7w, 3n, 3w, s, 3w, 5s, e, 3s, e, 4s, w, 2s, e, 2s, sw, sw, 2w, nw, n, 3w, 2s, 5w, 2n, 5w, 3n, 6w, 5s, 2sw, 4s", goback )
 	elseif "enhance" == dir then
-		speedwalk( "3n, 6e, 3s, e, s" )
-		send( "change channel to 5" )
-		send( "watch tv" )
+		expandAlias( "#go newhaven" )
 		speedwalk( "s, 2w, 22s, 19w, s, w" )
 	elseif "spiced" == dir then
 		if false == goback then
-			speedwalk( "3n, 6e, 3s, e, s" )
-			send( "change channel to 5" )
-			send( "watch tv" )
+			expandAlias( "#go newhaven" )
 			speedwalk( "s, 26w, 11s, 12w, 2nw, 11w, 9s, se, ne, sw, 2s, 2sw, w, s, 2sw, 2s, sw, s, sw, 14s, w, 2s, w" )
 		else
 			speedwalk( "s, 26w, 11s, 12w, 2nw, 11w, 9s, se, ne, sw, 2s, 2sw, w, s, 2sw, 2s, sw, s, sw, 14s, w, 2s, w", goback )
@@ -130,18 +128,20 @@ function eotl_go()
 		speedwalk( "4w, 2s", goback )
 	elseif "trolls" == dir then
 		if false == goback then
-			send( "e" )
-			send( "swim" )
-			speedwalk( "11e, 4s, e, 3s, e, 4s, w, 2s, e, 2s, 2sw, 2w, nw, n, 3w, 2s, 6w, 3n" )
+			expandAlias( "#go chaos" )
+			speedwalk( "s, 6w, 3n" )
 		else
-			speedwalk( "11e, 4s, e, 3s, e, 4s, w, 2s, e, 2s, 2sw, 2w, nw, n, 3w, 2s, 6w, 3n", goback )
-			speedwalk( "3w, n" )
-			send( "enter mirror" )
+			speedwalk( "s, 6w, 3n", goback )
+			expandAlias( "#go back chaos" )
 		end
 	elseif "temper" == dir then
-		speedwalk( "e" )
-		send( "swim" )
-		speedwalk( "11e, 4s, e, 3s, e, 4s, w, 2s, e, 2s, 2sw, 2w, nw, n, 3w, 2s, 16w, 7n, 2w, s, e" )
+		if false == goback then
+			expandAlias( "#go chaos" )
+			speedwalk( "s, 16w, 7n, 2w, s, e" )
+		else
+			speedwalk( "s, 16w, 7n, 2w, s, e", goback )
+			expandAlias( "#go back chaos" )
+		end
 	elseif "woodshop" == dir or "woods" == dir then
 		speedwalk( "5w, 2d, 4s, 4e, s, e, 4s, e, n, w, 3n, 2e, n, e, s, e, 2s, 3e", goback )
 	elseif "xmen" == dir then
@@ -160,7 +160,7 @@ function eotl_go()
 			send( "w" )
 			expandAlias( "#go back xmen" )
 		end
-	elseif "xlockers" == dir or "xlocker" == dir then
+	elseif "xlockers" == dir or "xlocker" == dir or "xlock" == dir then
 		if false == goback then
 			expandAlias( "#go xmen" )
 			speedwalk( "4n" )
@@ -192,6 +192,9 @@ function eotl_go()
 			speedwalk( "e, 2s" )
 			expandAlias( "#go back xmen" )
 		end
+	elseif "zarinia" == dir then
+		expandAlias( "#go newhaven" )
+		speedwalk( "s, 26w, 11s, 12w, 2nw, 11w, 9s, se, ne, se, 2s, se, s" )
 	end
 end
 
