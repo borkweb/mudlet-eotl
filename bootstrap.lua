@@ -10,13 +10,28 @@ function init_ui_vars()
 	end
 
 	if not chatbox_size_height then
-		chatbox_size_height = 200
+		chatbox_size_height = 250
 	end
 
 	statusbar_size_width = 600
 	statusbar_size_height = 40
 	roomlabel_size_width = 600
 	roomlabel_size_height = 40
+end
+
+function string:split( inSplitPattern, outResults )
+	if not outResults then
+		outResults = { }
+	end
+	local theStart = 1
+	local theSplitStart, theSplitEnd = string.find( self, inSplitPattern, theStart )
+	while theSplitStart do
+		table.insert( outResults, string.sub( self, theStart, theSplitStart-1 ) )
+		theStart = theSplitEnd + 1
+		theSplitStart, theSplitEnd = string.find( self, inSplitPattern, theStart )
+	end
+	table.insert( outResults, string.sub( self, theStart ) )
+	return outResults
 end
 
 function format_int( number )
