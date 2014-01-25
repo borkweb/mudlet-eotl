@@ -35,6 +35,7 @@ function eotl_go_help()
 	echo( "enhance       (enhancement for items in Newhaven)\n" )
 	echo( "spiced        (Spice items in Sams)\n" )
 	echo( "stats\n" )
+	echo( "toad          (Uses the staff to go to Yxuxacta\n" )
 	echo( "trolls\n" )
 	echo( "temper        (Temper armor)\n" )
 	echo( "witch         (Delvarii in Ragnarok\n" )
@@ -163,6 +164,9 @@ function eotl_go()
 		end
 		speedwalk( "5w, 2d, 5n" )
 		send( "pay guard" )
+		if true == leading_helper then
+			send( "group say pay guard" )
+		end
 		speedwalk( "3n, e, s" )
 		send( "deny humanity" )
 		if true == leading_helper then
@@ -170,9 +174,13 @@ function eotl_go()
 		end
 		tempTimer( 2, [[
 			send( "stand" )
+			tempTimer( 2, "glance" )
 			speedwalk( "n, ne, w, n" )
 			send( "move sheets" )
 			send( "lay on bed" )
+			if true == leading_helper then
+				send( "group say move sheets" )
+			end
 		]])
 	elseif "mk4" == dir or "mk5" == dir or "mk6" == dir then
 		if false == goback then
@@ -232,6 +240,12 @@ function eotl_go()
 		end
 	elseif "stats" == dir then
 		speedwalk( "4w, 2s", goback )
+	elseif "toad" == dir then
+		if true == leading_helper then
+			send( "give crystallized lysergic staff to " .. lead_who )
+			send( "group say [automated] lick staff and give back please" )
+		end
+		send( "lick staff" )
 	elseif "trolls" == dir then
 		if false == goback then
 			expandAlias( "#go chaos" )

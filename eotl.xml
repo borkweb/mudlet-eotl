@@ -268,16 +268,27 @@ end</script>
             </Alias>
             <Alias isActive="yes" isFolder="no">
                 <name>follow helper</name>
-                <script>if false == follow_helper then
-	echo( &quot;Follow Helper: ON\n&quot; )
-	follow_helper = true
+                <script>follow_who = matches[2]
+if follow_who then
+	follow_who = string.gsub( follow_who, &quot;%s+&quot;, &quot;&quot; )
+end
+
+if follow_who or true == follow_helper then
+	if false == follow_helper then
+		echo( &quot;Follow Helper: ON\n&quot; )
+		echo( &quot;You are now following &quot; .. follow_who ..&quot;\n&quot; )
+		follow_helper = true
+	else
+		echo( &quot;Follow Helper: OFF\n&quot; )
+		follow_helper = false
+		follow_who = &quot;&quot;
+	end
 else
-	echo( &quot;Follow Helper: OFF\n&quot; )
-	follow_helper = false
+	echo( &quot;Follow who?  Example: #follow draevokk\n&quot; )
 end</script>
                 <command></command>
                 <packageName></packageName>
-                <regex>^#follow$</regex>
+                <regex>^#follow( .+)?$</regex>
             </Alias>
             <Alias isActive="yes" isFolder="no">
                 <name>go</name>
@@ -298,6 +309,9 @@ send( &quot;rest&quot; )</script>
             <Alias isActive="yes" isFolder="no">
                 <name>leading helper</name>
                 <script>lead_who = matches[2]
+if lead_who then
+	lead_who = string.gsub( lead_who, &quot;%s+&quot;, &quot;&quot; )
+end
 
 if lead_who or true == leading_helper then
 	if false == leading_helper then
@@ -310,7 +324,7 @@ if lead_who or true == leading_helper then
 		lead_who = &quot;&quot;
 	end
 else
-	echo( &quot;Lead who?  Example: lead draevokk\n&quot; )
+	echo( &quot;Lead who?  Example: #lead draevokk\n&quot; )
 end</script>
                 <command></command>
                 <packageName></packageName>

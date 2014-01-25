@@ -1,4 +1,6 @@
 function init_following()
+	lead_who = false
+	follow_who = false
 	leading_helper = false
 	follow_helper = false
 
@@ -19,10 +21,15 @@ function following_response()
 			send( "say deny humanity" )
 			tempTimer( 2, [[
 				send( "stand" )
-				speedwalk( "n, ne, w, n" )
-				send( "move sheets" )
-				send( "lay on bed" )
 			]])
+		elseif "pay guard" == say then
+			send( "pay guard" )
+		elseif "move sheets" == say then
+			send( "move sheets" )
+			send( "lay on bed" )
+		elseif "[automated] lick staff and give back please" == say then
+			send( "lick staff" )
+			send( "give crystallized lysergic staff to " .. follow_who )
 		elseif "door" == say then send( "open door" )
 		elseif "elevator" == say then send( "elevator" )
 		elseif "portal" == say then send( "enter portal" )
