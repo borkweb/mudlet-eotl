@@ -26,6 +26,7 @@ function init_statusbar()
 	table.insert( statusbar_strings, "Your reflexes return to normal." )
 	table.insert( statusbar_strings, "You fail to use your reflex heightening ability!" )
 	table.insert( statusbar_strings, "You don't feel as tough anymore." )
+	table.insert( statusbar_strings, "You regain your strength" )
 
 	for i, value in ipairs( statusbar_strings ) do
 		statusbar_trigger = tempComplexRegexTrigger( "statusbar_trigger", value, [[
