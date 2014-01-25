@@ -19,7 +19,10 @@ function eotl_go()
 		goback = false
 	end
 
-	if "argos" == dir then
+	if "alfred" == dir then
+		expandAlias( "#go newhaven" )
+		speedwalk( "s, 26w, 11s, 12w, 2nw, 11w, 9s, se, ne, n" )
+	elseif "argos" == dir then
 		expandAlias( "#go entesia" )
 		speedwalk( "2n, w, 2n, 5e, s" )
 		send( "wish on star" )
@@ -107,7 +110,9 @@ function eotl_go()
 		send( "touch scarecrow" )
 		speedwalk( "3e, ne, 3n, w" )
 	elseif "newhaven" == dir then
-		speedwalk( "3n, 6e, 3s, e, s, change channel to 5, watch tv" )
+		speedwalk( "3n, 6e, 3s, e, s" )
+		send( "change channel to 5" )
+		send( "watch tv" )
 	elseif "oracle" == dir then
 		speedwalk( "2e, 5s, 3w, s", goback )
 	elseif "reds" == dir then
