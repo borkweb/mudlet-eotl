@@ -115,8 +115,13 @@ function eotl_go()
 			expandAlias( "#go back chaos" )
 		end
 	elseif "enchant" == dir then
-		expandAlias( "#go ragnarok" )
-		speedwalk( "s, e, 3n, 4w, n, w, nw" )
+		if false == goback then
+			expandAlias( "#go ragnarok" )
+			speedwalk( "s, e, 3n, 4w, n, w, nw" )
+		else
+			speedwalk( "s, e, 3n, 4w, n, w, nw", goback )
+			expandAlias( "#go back ragnarok" )
+		end
 	elseif "enhance" == dir then
 		expandAlias( "#go newhaven" )
 		speedwalk( "s, 2w, 22s, 19w, s, w" )
@@ -169,14 +174,25 @@ function eotl_go()
 		end
 	elseif "oracle" == dir then
 		speedwalk( "2e, 5s, 3w, s", goback )
-	elseif "ragnarok claws" == dir then
-		speedwalk( "3e, n, 3e, 3s, 3e, 2u" )
-		send( "place claws on altar" )
-		send( "place hands on altar" )
-		send( "place paws on altar" )
-		send( "say death" )
-		if true == leading_helper then
-			send( "group say altar" )
+	elseif "ragnarok" == dir then
+		if false == goback then
+			speedwalk( "3e, n, 3e, 3s, 3e, 2u" )
+			send( "place claws on altar" )
+			send( "place hands on altar" )
+			send( "place paws on altar" )
+			send( "say death" )
+			if true == leading_helper then
+				send( "group say altar" )
+			end
+		else
+			send( "place claws on altar" )
+			send( "place hands on altar" )
+			send( "place paws on altar" )
+			send( "say death" )
+			if true == leading_helper then
+				send( "group say altar" )
+			end
+			speedwalk( "3e, n, 3e, 3s, 3e, 2u", goback )
 		end
 	elseif "reds" == dir then
 		speedwalk( "5w, 2d, 6s, 7w, 3n, 3w, s, 3w, 5s, e, 3s, e, 4s, w, 2s, e, 2s, sw, sw, 2w, nw, n, 3w, 2s, 5w, 2n, 5w, 3n, 6w, 5s, 2sw, 4s", goback )
