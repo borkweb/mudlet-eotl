@@ -49,7 +49,7 @@ function chatbox_echo()
 		appendBuffer( "chatbox" )
 
 		if false == mute then
-			playSoundFile("/System/Library/Sounds/Pop.aiff")
+			playSoundFile( chat_sound )
 		end
 	end
 end

@@ -17,6 +17,10 @@ function init_ui_vars()
 	statusbar_size_height = 40
 	roomlabel_size_width = 600
 	roomlabel_size_height = 40
+
+	if not chat_sound then
+		chat_sound = "/System/Library/Sounds/Pop.aiff"
+	end
 end
 
 function string:split( inSplitPattern, outResults )

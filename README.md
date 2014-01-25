@@ -19,12 +19,12 @@ My Mudlet scripts for EotL
 
 ```lua
 -- *** Commands and helpers *** --
+-- chatbox_size_width = 400
+-- chatbox_size_height = 250
+-- chat_sound = "/System/Library/Sounds/Pop.aiff"
 
 -- provide quick directions
 dofile(getMudletHomeDir() .. "/mudlet-eotl/go.lua")
-
--- autojunks some items that are annoying when coining
-dofile(getMudletHomeDir() .. "/mudlet-eotl/autojunk.lua")
 
 -- enables some follow commands so you don't have to react to your friend's needs when following him/her
 dofile(getMudletHomeDir() .. "/mudlet-eotl/following.lua")
