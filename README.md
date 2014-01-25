@@ -18,14 +18,32 @@ My Mudlet scripts for EotL
 3. In the code section of that script, place the following:
 
 ```lua
--- Commands and helpers
+-- *** Commands and helpers *** --
+
+-- provide quick directions
 dofile(getMudletHomeDir() .. "/mudlet-eotl/go.lua")
 
--- UI Stuff
+-- autojunks some items that are annoying when coining
+dofile(getMudletHomeDir() .. "/mudlet-eotl/autojunk.lua")
+
+-- enables some follow commands so you don't have to react to your friend's needs when following him/her
+dofile(getMudletHomeDir() .. "/mudlet-eotl/following.lua")
+
+-- *** UI Stuff *** --
+
+-- required for all UI stuff in this script collection
 dofile(getMudletHomeDir() .. "/mudlet-eotl/bootstrap.lua")
+
+-- adds a chatbox to the bottom left
 dofile(getMudletHomeDir() .. "/mudlet-eotl/ui.chatbox.lua")
+
+-- adds a statusbar to the bottom left
 dofile(getMudletHomeDir() .. "/mudlet-eotl/ui.statusbar.lua")
+
+-- adds hp/mana/ftg/xp bars
 dofile(getMudletHomeDir() .. "/mudlet-eotl/ui.bars.lua")
+
+-- adds a room labeler (that is sometimes catches more than rooms)
 dofile(getMudletHomeDir() .. "/mudlet-eotl/ui.roomlabel.lua")
 ```
 
