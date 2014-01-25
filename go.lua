@@ -1,9 +1,10 @@
 function init_go()
 	echo( "--------------\n" )
 	echo( "ENABLING go ALIAS. Usage:\n" )
-	echo( "  #go dir -- sends you to a dir\n" )
+	echo( "  #go dir      -- sends you to a dir\n" )
 	echo( "  #go back dir -- sends you back to heart from a dir\n" )
-	echo( "  #rgo dir -- sends you to a dir and makes you rest\n\n" )
+	echo( "  #rgo dir     -- sends you to a dir and makes you rest\n" )
+	echo( "  #go help     -- shows you dirs you can enter\n\n"
 	echo( "--------------\n" )
 end
 
@@ -55,7 +56,9 @@ function eotl_go()
 		goback = false
 	end
 
-	if "alfred" == dir then
+	if "help" == dir then
+		eotl_go_help()
+	elseif "alfred" == dir then
 		expandAlias( "#go newhaven" )
 		speedwalk( "s, 26w, 11s, 12w, 2nw, 11w, 9s, se, ne, n" )
 	elseif "argos" == dir then
