@@ -46,6 +46,12 @@ dofile(getMudletHomeDir() .. "/mudlet-eotl/ui.bars.lua")
 dofile(getMudletHomeDir() .. "/mudlet-eotl/ui.roomlabel.lua")
 ```
 
+### Setting up the Triggers and Aliases
+
+1. Open the Triggers window and click Import
+2. Browse to the `mudlet-eotl` directory and select the `eotl.xml` file
+3. You should be good to go
+
 ## Disabling features
 
 If you don't want certain UI components, you can remove them by commenting out the line for the element you do not wish to have.  E.g. if you don't want the bars (health/mana/etc) you would do:
