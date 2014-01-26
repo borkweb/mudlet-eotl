@@ -13,6 +13,7 @@ function init_chatbox ()
 	setMiniConsoleFontSize("chatbox", 10)
 
 	mute = false
+	log_chat = true
 end
 
 function chatbox_echo()
@@ -42,14 +43,16 @@ function chatbox_echo()
 		or string.find( line, "says: My handkerchief will wipe up your blood!" )
 	) then
 
-		linenumber = getLineNumber()
-		selectCurrentLine()
-		copy()
-		chatbox:echo( time .. " " )
-		appendBuffer( "chatbox" )
+		if true == log_chat then
+			linenumber = getLineNumber()
+			selectCurrentLine()
+			copy()
+			chatbox:echo( time .. " " )
+			appendBuffer( "chatbox" )
 
-		if false == mute then
-			playSoundFile( chat_sound )
+			if false == mute then
+				playSoundFile( chat_sound )
+			end
 		end
 	end
 end

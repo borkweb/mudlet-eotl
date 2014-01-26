@@ -332,6 +332,16 @@ end</script>
                 <packageName></packageName>
                 <regex>^#lead( .+)?$</regex>
             </Alias>
+            <Alias isActive="yes" isFolder="no">
+                <name>group last say chatbox compat</name>
+                <script>log_chat = false
+send( &quot;group say /last&quot;, true )
+tempTimer( 2, [[log_chat = true]] )
+</script>
+                <command></command>
+                <packageName></packageName>
+                <regex>gls</regex>
+            </Alias>
         </AliasGroup>
     </AliasPackage>
     <ActionPackage/>
