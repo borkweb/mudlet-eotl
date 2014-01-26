@@ -19,7 +19,7 @@ function init_ui_vars()
 	roomlabel_size_height = 40
 
 	if not chat_sound then
-		chat_sound = getMudletHomeDir() .. "/sounds/Pop.wav"
+		chat_sound = getMudletHomeDir() .. "/mudlet-eotl/sounds/Pop.wav"
 	end
 end
 
