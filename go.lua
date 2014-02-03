@@ -31,6 +31,7 @@ function eotl_go_help()
 	echo( "forester      (Forester Guild)\n" )
 	echo( "headhunter    (Headhunter Guild)\n" )
 	echo( "heart\n" )
+	echo( "homeless      (Homeless Shelter)\n" )
 	echo( "jedi          (Padawan Guild: Jedi Spec)\n" )
 	echo( "keeshka       (also: keeshkas OR milk)\n" )
 	echo( "kindred\n" )
@@ -197,6 +198,8 @@ function eotl_go()
 		if true == leading_helper then
 			send( "group say birdie" )
 		end
+	elseif "homeless" == dir then
+		speedwalk( "5w, 9s, d, s, d, e, 4s, 3e, n", goback )
 	elseif "jedi" == dir then
 		if false == goback then
 			expandAlias( "#go padawan" )
