@@ -328,6 +328,9 @@ function eotl_go()
 	elseif "solace" == dir then
 		speedwalk( "s" )
 		send( "swim" )
+		speedwalk( "2n, w, 8n, u" )
+		send( "cave" )
+		send( "use orb" )
 		speedwalk( "2n, 2w" )
 		send( "enter solace" )
 	elseif "spellcaster" == dir then
